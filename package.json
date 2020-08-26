@@ -1,0 +1,24 @@
+{
+  "name": "rvrita-etsy-reviews-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FEC-Linka/rvrita-etsy-reviews-proxy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FEC-Linka/rvrita-etsy-reviews-proxy/issues"
+  },
+  "homepage": "https://github.com/FEC-Linka/rvrita-etsy-reviews-proxy#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
+}
