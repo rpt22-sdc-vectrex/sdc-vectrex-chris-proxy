@@ -5,23 +5,45 @@
   <meta charset="UTF-8">
   <title>FEC Linka Project</title>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    body {width: 1400px;display:flex;margin: 0 auto;}
+    #left-col {flex: 2 1;}
+    #right-col {flex: 1 1;}
+    #pictures, #reviews, #shipping, #product-detail {border: 1px solid #000;}
+  </style>
 </head>
 
 <body>
-  <div id="pictures"></div>
-  <div id="reviews"></div>
-  <div id="product-detail"></div>
-  <div id="shipping"></div>
+  <div id="left-col">
+    <div id="pictures"></div>
+    <div id="reviews"></div>
+  </div>
+  <div id="right-col">
+    <div id="product-detail"></div>
+    <div id="shipping"></div>
+  </div>
   <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-  <!-- <script src="http://pictures/app.js"></script> -->
+  <script src="http://localhost:3000/main.bundle.js"></script>
   <script src="http://localhost:8888/bundle.js"></script>
-  <!-- <script src="http://product-detail/app.js"></script> -->
-  <!-- <script src="http://shipping/app.js"></script> -->
+  <script src="http://localhost:5000/bundle.js"></script>
+  <script src="http://localhost:7100/dist/ttreit-shipping.js"></script>
   <script>
+    ReactDOM.render(
+      React.createElement(Pictures),
+      document.getElementById('pictures')
+    );
     ReactDOM.render(
       React.createElement(ReviewsWidget),
       document.getElementById('reviews')
+    );
+    ReactDOM.render(
+      React.createElement(Items),
+      document.getElementById('product-detail')
+    );
+    ReactDOM.render(
+      React.createElement(App),
+      document.getElementById('shipping')
     );
   </script>
 </body>
