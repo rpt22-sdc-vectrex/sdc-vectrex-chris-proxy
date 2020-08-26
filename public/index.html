@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>FEC Linka Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="pictures"></div>
+  <div id="reviews"></div>
+  <div id="product-detail"></div>
+  <div id="shipping"></div>
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <!-- <script src="http://pictures/app.js"></script> -->
+  <script src="http://localhost:8888/bundle.js"></script>
+  <!-- <script src="http://product-detail/app.js"></script> -->
+  <!-- <script src="http://shipping/app.js"></script> -->
+  <script>
+    ReactDOM.render(
+      React.createElement(ReviewsWidget),
+      document.getElementById('reviews')
+    );
+  </script>
+</body>
+
+</html>
