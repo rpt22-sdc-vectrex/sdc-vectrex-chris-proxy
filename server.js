@@ -13,20 +13,20 @@ app.use(cors());
 
 const proxyRoutes = [
   {
-    paths: [ '/reviews/*', '/review-summary/*', '/review-list/*', '/reviews-pictures/*' ],
-    server: 'http://localhost:8888',
+    paths: [ '/reviews/*', '/review-summary/*', '/review-list/*', '/reviews-pictures/*', '/reviews-bundle.js' ],
+    server: 'http://etsy-review.rvrita.com',
   },
   {
-    paths: [ '/itemDetails/*', '/info' ],
+    paths: [ '/itemDetails/*', '/info', '/bundle.js' ],
     server: 'http://localhost:5000',
   },
   {
-    paths: [ '/pictures', '/pictures/*', '/reviewPhotos/*' ],
+    paths: [ '/pictures', '/pictures/*', '/reviewPhotos/*', '/main.bundle.js' ],
     server: 'http://localhost:3000',
   },
   {
-    paths: [ '/shipping-api/*' ],
-    server: 'http://localhost:7100',
+    paths: [ '/shipping-api/*', '/dist/ttreit-shipping.js' ],
+    server: 'http://3.93.215.160',
   },
 ];
 
