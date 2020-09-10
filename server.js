@@ -14,7 +14,7 @@ app.use(cors());
 const proxyRoutes = [
   {
     paths: [ '/reviews/*', '/review-summary/*', '/review-list/*', '/reviews-pictures/*', '/reviews-bundle.js' ],
-    server: 'http://etsy-review.rvrita.com',
+    server: 'http://etsy-reviews.rvrita.com',
   },
   {
     paths: [ '/itemDetails/*', '/info', '/bundle.js' ],
