@@ -44,6 +44,7 @@ proxyRoutes.forEach(route => {
     const url = server + req.url;
     axios.get(url)
     .then((response) => {
+      res.set('Cache-Control', 'max-age=3600'); // browser should cache for 1 hour
       res.send(response.data);
     })
     .catch((error) => {
