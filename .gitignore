@@ -9,3 +9,6 @@ node_modules
 
 #Ignore dist bundle
 bundle.js
+
+newrelic.js
+newrelic_agent.log
