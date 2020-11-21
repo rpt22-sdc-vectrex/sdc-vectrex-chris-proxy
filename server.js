@@ -16,22 +16,24 @@ const modules = require('./templates/module-config.json');
 const Template = require('./templates/main');
 const Scripts = require('./templates/scripts');
 const Divs = require('./templates/divs');
+// const BundleLoader = require('./templates/bundleLoader')(modules)
+// bundleLoader();
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const renderComponents = (components) => {
-  return Object.keys(components).map((item) => {
-    const component = React.createElement(components[item]);
-    return ReactDom.renderToString(component);
-  })
+  // console.log('***', typeof ReactDom.renderToString(components))
+  const component = React.createElement(components);
+  return ReactDom.renderToString(component);
+
 }
 
 // fall through to index.html
 app.get('**', (req, res) => {
-  const components = renderComponents(modules);
+  const components = renderComponents(component);
   res.send(Template(
     'SDC-Vectrex-Chris-Proxy',
-    Divs(...components),
+    Divs(components),
     Scripts(Object.keys(modules))
   ));
   // res.sendFile(path.resolve(__dirname, 'public/index.html'));

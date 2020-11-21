@@ -1,5 +1,3 @@
 {
-  "Header": "http://etsy-header.rvrita.com",
-  "Shipping": "http://52.9.126.252",
-  "Footer": "http://etsy-footer.rvrita.com"
+  "shipping": "http://52.9.126.252/sdc-vectrex-chris-shipping-prod.js"
 }
