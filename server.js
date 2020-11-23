@@ -15,27 +15,30 @@ app.use(cors());
 const proxyRoutes = [
   {
     paths: [ '/header-bundle.js' ],
-    server: 'http://etsy-header.rvrita.com/',
+    server: 'http://etsy-header.rvrita.com',
   },
   {
     paths: [ '/footer-bundle.js' ],
-    server: 'http://etsy-footer.rvrita.com/',
+    server: 'http://etsy-footer.rvrita.com',
   },
   {
     paths: ['/sdc-vectrex-chris-shipping-prod.js' ],
-    server: 'http://54.151.125.123:7100',
+    server: 'http://52.9.126.252',
   },
 ];
 
-proxyRoutes.forEach(route => {
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+proxyRoutes.forEach((route) => {
   const { server, paths } = route;
   const handler = (req, res) => {
     const url = server + req.url;
-    axios.get(url)
+    console.log(url)
+    axios(url)
     .then((response) => {
       const { data } = response;
-      res.set('Cache-Control', 'max-age=3600'); // browser should cache for 1 hour
-      res.send(data);
+      res.status(200).send(data);
     })
     .catch((error) => {
       console.error(error);
@@ -47,22 +50,8 @@ proxyRoutes.forEach(route => {
   });
 });
 
-app.use(express.static(__dirname + '/public'));
 
 // fall through to index.html
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'public/index.html'));
 });
-
-// {
-//   paths: [ '/reviews/*', '/review-summary/*', '/review-list/*', '/reviews-pictures/*', '/reviews-bundle.js' ],
-//   server: 'http://localhost:8888/',
-// },
-// {
-//   paths: [ '/pictures', '/pictures/*', '/reviewPhotos/*', '/pictures.bundle.js' ],
-//   server: 'http://13.56.229.226',
-// },
-// {
-//   paths: [ '/itemDetails/*', '/info/*', '/bundle.js' ],
-//   server: 'http://ec2-3-133-108-106.us-east-2.compute.amazonaws.com',
-// },

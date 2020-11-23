@@ -9,6 +9,8 @@ node_modules
 
 #Ignore dist bundle
 bundle.js
+sdc-vectrex-chris-shipping-dev.js
+sdc-vectrex-chris-shipping-prod.js
 
 newrelic.js
 newrelic_agent.log
