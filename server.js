@@ -14,15 +14,15 @@ app.use(cors());
 
 const proxyRoutes = [
   {
-    paths: [ '/header-bundle.js' ],
+    paths: ['/header-bundle.js'],
     server: 'http://etsy-header.rvrita.com',
   },
   {
-    paths: [ '/footer-bundle.js' ],
+    paths: ['/footer-bundle.js'],
     server: 'http://etsy-footer.rvrita.com',
   },
   {
-    paths: ['/sdc-vectrex-chris-shipping-prod.js' ],
+    paths: ['/sdc-vectrex-chris-shipping-prod.js'],
     server: 'http://52.9.126.252',
   },
 ];
@@ -33,22 +33,36 @@ app.use(express.static(path.join(__dirname, 'public')));
 proxyRoutes.forEach((route) => {
   const { server, paths } = route;
   const handler = (req, res) => {
-    const url = server + req.url;
+    const url = server + req.url
     console.log(url)
     axios(url)
-    .then((response) => {
-      const { data } = response;
-      res.status(200).send(data);
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(500).send(error);
-    });
+      .then((response) => {
+        const { data } = response;
+        res.status(200).send(data);
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send(error);
+      });
   };
   paths.forEach((path) => {
     app.get(path, handler);
   });
 });
+
+app.get('/product/:productId', (req, res) => {
+  const { productId } = req.params
+  const url = `http://52.9.126.252/product/${productId}`
+  console.log(url)
+  axios(url)
+    .then((response) => {
+      const { data } = response;
+      res.status(200).send(data);
+    })
+    .catch((error) => {
+      res.status(400).send(error);
+    })
+})
 
 
 // fall through to index.html
